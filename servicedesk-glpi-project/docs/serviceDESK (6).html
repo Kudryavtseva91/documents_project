@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Service Desk — полная презентация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fffbf5;
+            color: #2c2c2c;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero {
+            background: linear-gradient(135deg, #b81b1b 0%, #8b0000 100%);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 12px 25px -8px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.7s ease;
+        }
+        .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 75%; }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.85rem; margin-bottom: 1rem; }
+        .logo-furniture { font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .info-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6e6;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s;
+        }
+        .info-card.visible { opacity: 1; transform: translateY(0); }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(184,27,27,0.12); }
+        .info-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #b81b1b;
+            border-left: 4px solid #b81b1b;
+            padding-left: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .badge-red {
+            display: inline-block;
+            background: #fee2e2;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #b81b1b;
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 2rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-left: 5px solid #b81b1b;
+            padding-left: 1rem;
+            color: #2c2c2c;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0 0.5rem;
+            border-radius: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #e9dbdb;
+            padding: 0.7rem 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #fff2f0;
+            font-weight: 700;
+            color: #b81b1b;
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 700px) { .two-columns { grid-template-columns: 1fr; } .hero h1 { font-size: 2rem; } .hero p { max-width: 100%; } }
+        .highlight-red { background: #fff5f5; border-left: 3px solid #b81b1b; padding: 0.8rem 1rem; border-radius: 0.8rem; margin: 0.8rem 0; }
+        .btn-red { background: #b81b1b; color: white; border: none; border-radius: 40px; padding: 0.4rem 1rem; font-weight: 500; display: inline-block; }
+        .scroll-fade { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .scroll-fade.visible { opacity: 1; transform: translateY(0); }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid #f0e6e6;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
+        .metric-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
+        .metric-badge { background: #fef2f2; border-radius: 2rem; padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 600; color: #b81b1b; }
+        .diagram-placeholder {
+            background: #fef7f0;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border: 1px dashed #b81b1b;
+        }
+        .diagram-step { text-align: center; flex: 1; min-width: 80px; }
+        .diagram-step i { font-size: 2rem; color: #b81b1b; background: white; padding: 0.5rem; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .process-arrow { font-size: 1.5rem; color: #b81b1b; align-self: center; }
+        footer { text-align: center; padding: 2rem 0 1rem; font-size: 0.8rem; color: #7a5a5a; border-top: 1px solid #f0e0e0; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="logo-furniture"><i class="fas fa-couch"></i> Мебельная фабрика</div>
+        <div class="hero-badge"><i class="fas fa-chalkboard-user"></i>  Проект внедрения Service Desk 2026</div>
+        <h1>Новый Service Desk:<br> прозрачность, скорость, контроль</h1>
+        <p>Структурированный учёт обращений, диспетчеризация, SLA по отделам, автоматизация маршрутизации и единый портал для всех подразделений.</p>
+    </div>
+
+    <!-- ПЛАШКИ (цель, стейкхолдеры, метрики) -->
+    <div class="info-grid">
+        <div class="info-card">
+            <h2><i class="fas fa-bullseye"></i> Цель проекта</h2>
+            <p>Внедрить централизованную структуру для всех обращений: учёт, диспетчеризация, анализ эффективности, выявление зон улучшения и оптимизация бизнес-процессов.</p>
+            <div class="highlight-red" style="margin-top:0.8rem;">
+                <i class="fas fa-check-circle" style="color:#b81b1b"></i> <strong>Критерии приёмки:</strong><br>
+                интеграция с почтой, кастомизация интерфейса и процессов, маршрутизация по категориям, поддержка иерархии.
+            </div>
+        </div>
+        <div class="info-card">
+            <h2><i class="fas fa-users"></i> Ключевые стейкхолдеры</h2>
+            <ul>
+                <li><strong>Владелец процесса:</strong> Юлия Логонова (руководитель поддержки) – цели, KPI, SLA, процессы.</li>
+                <li><strong>Агенты L1:</strong> обратная связь по usability, скорость обработки.</li>
+                <li><strong>Бизнес-подразделения:</strong> 1С, Инженеры, Конструкторы – боли, типичные обращения.</li>
+                <li><strong>IT/Администрирование:</strong> миграция данных, интеграции, API.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h2><i class="fas fa-chart-simple"></i> Ключевые метрики AS-IS</h2>
+            <div class="metric-row">
+                <span class="metric-badge"><i class="fas fa-ticket-alt"></i> 150–750 заявок/день</span>
+                <span class="metric-badge"><i class="fas fa-envelope"></i> 95% канал — почта</span>
+            </div>
+            <p style="margin-top: 0.8rem;">Текущая система: <strong>Redmine + кастомный плагин</strong> (без поддержки).<br>
+            🔴 Узкие места: ручная маршрутизация, отсутствие SLA по группам, дублирование данных.</p>
+        </div>
+    </div>
+
+    <!-- ФУНКЦИОНАЛЬНЫЕ ТРЕБОВАНИЯ -->
+    <div class="section-title scroll-fade"><i class="fas fa-microchip"></i><span>Функциональные требования (ключевые)</span></div>
+    <div class="grid-cards scroll-fade">
+        <div class="card"><div class="badge-red">ФТ-1</div><h3>Управление пользователями</h3><p>6 ролей (инициатор, наблюдатель, исполнитель, руководитель, диспетчер, админ). SSO через ADFS, синхронизация из AD.</p></div>
+        <div class="card"><div class="badge-red">ФТ-2</div><h3>Автоматическое создание заявок</h3><p>Из писем на help@marya.ru (каждые 2 мин). Извлечение темы, тела, вложений, определение инициатора.</p></div>
+        <div class="card"><div class="badge-red">ФТ-3</div><h3>Маршрутизация</h3><p>Правила Тип→Группа, параллельное/последовательное назначение, возврат на 1 линию с комментарием.</p></div>
+        <div class="card"><div class="badge-red">ФТ-4</div><h3>Статусы и ЖЦ</h3><p>7 статусов (Новая, В распределении, В работе, В ожидании, Выполнена, Отклонена, Дубликат). Цветовая индикация.</p></div>
+        <div class="card"><div class="badge-red">ФТ-5</div><h3>SLA и метрики</h3><p>5 типов времени (реакция, диспетчеризация, реакция исполнителя, время в работе, время жизни). Остановка в нерабочее время.</p></div>
+        <div class="card"><div class="badge-red">ФТ-6</div><h3>Оценки качества</h3><p>ХОРОШО, ПЛОХО, ВЕРНУТЬ В РАБОТУ. 24ч на оценку, автозакрытие без оценки.</p></div>
+        <div class="card"><div class="badge-red">ФТ-7</div><h3>Интеграции</h3><p>Почта, 1С (структура, графики), ADFS, REST API, Webhook, Чат-бот.</p></div>
+        <div class="card"><div class="badge-red">ФТ-8</div><h3>Кастомизация без кода</h3><p>Настройка типов заявок, полей, приоритетов, правил маршрутизации, SLA через UI администратора.</p></div>
+    </div>
+
+    <!-- НЕФУНКЦИОНАЛЬНЫЕ ТРЕБОВАНИЯ -->
+    <div class="section-title scroll-fade"><i class="fas fa-shield-hooded"></i><span>Нефункциональные требования</span></div>
+    <div class="two-columns scroll-fade">
+        <div class="card"><h3><i class="fas fa-tachometer-alt"></i> Производительность</h3><ul><li>Время отклика &lt; 2 сек (95% запросов)</li><li>Загрузка 1000 заявок &lt; 3 сек</li><li>Пропускная способность: 750 заявок/день, 100 одновременных пользователей</li><li>Обработка email до 50 писем/мин</li></ul></div>
+        <div class="card"><h3><i class="fas fa-lock"></i> Безопасность</h3><ul><li>ADFS (SSO)</li><li>6 ролей, принцип минимальных привилегий</li><li>HTTPS, маскирование ПД в логах</li><li>Аудит входов, хранение логов 1 год</li><li>Соответствие 152-ФЗ, хранение ПД в РФ</li></ul></div>
+        <div class="card"><h3><i class="fas fa-chart-line"></i> Доступность</h3><ul><li>99.5% в рабочее время (8:00–22:00)</li><li>RTO &lt; 4 часа, ежедневный бэкап БД</li><li>Мониторинг доступности каждую минуту</li></ul></div>
+        <div class="card"><h3><i class="fas fa-expand-alt"></i> Масштабируемость</h3><ul><li>Горизонтальное масштабирование без простоя</li><li>Поддержка до 5000 активных пользователей</li><li>До 500 групп с иерархией</li></ul></div>
+    </div>
+
+    <!-- БЛОК БИЗНЕС-ТРЕБОВАНИЙ (НОВЫЙ) -->
+    <div class="section-title scroll-fade"><i class="fas fa-briefcase"></i><span>Бизнес-требования</span></div>
+    <div class="grid-cards scroll-fade">
+        <div class="card"><div class="badge-red">Бизнес-правила SLA</div><h3>Умный расчёт</h3><ul><li>SLA считается в рабочие часы подразделения</li><li>Остановка в нерабочее время, выходные, праздники</li><li>Независимые SLA для каждой группы в цепочке</li><li>Напоминания при 70% истечения, эскалация руководителю</li></ul></div>
+        <div class="card"><div class="badge-red">Бизнес-процессы</div><h3>TO-BE сценарии</h3><ul><li>Линейная задача: поступление → диспетчеризация → исполнение → оценка</li><li>Согласование: запрос согласующему, при отклонении — закрытие без оценки</li><li>Параллельное исполнение: связанные задачи для 2+ групп Группа1 → Группа2 → ... → ГруппаN</li><li>Анкета нового сотрудника: автоподстановка ПО/прав, создание нескольких заявок</li></ul></div>
+        <div class="card"><div class="badge-red">Интеграции</div><h3>С корпоративной экосистемой</h3><ul><li>Почта (IMAP/SMTP) – автосоздание заявок</li><li>1С – структура подразделений, графики работы, пользователи</li><li>ADFS (SSO) – единый вход</li><li>REST API, Webhook, Чат-боты</li></ul></div>
+        <div class="card"><div class="badge-red">Юридические требования</div><h3>152-ФЗ и безопасность</h3><ul><li>Хранение персональных данных на территории РФ</li><li>Согласие на обработку ПД при первом входе</li><li>Право на удаление ПД по запросу</li><li>Хранение заявок 3 года, логов – 1 год</li></ul></div>
+    </div>
+
+
+
+    <!-- Визуализация процессов AS-IS → TO-BE -->
+    <div class="section-title scroll-fade"><i class="fas fa-diagram-project"></i><span>Визуализация процессов: AS-IS → TO-BE</span></div>
+    <div class="two-columns scroll-fade">
+        <div class="card">
+            <h3><i class="fas fa-exclamation-triangle"></i> AS-IS (текущий)</h3>
+            <div class="diagram-placeholder">
+                <div class="diagram-step"><i class="fas fa-envelope"></i><br>Почта</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-hand-pointer"></i><br>Макрос</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-database"></i><br>Redmine</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-user-cog"></i><br>Ручное назначение</div>
+            </div>
+            <p>🔴 Узкие места: ручная маршрутизация, много кликов, отсутствие SLA по группам при последовательной работе.</p>
+        </div>
+        <div class="card">
+            <h3><i class="fas fa-check-circle"></i> TO-BE (целевой)</h3>
+            <div class="diagram-placeholder">
+                <div class="diagram-step"><i class="fas fa-envelope"></i><br>Почта</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-robot"></i><br>Автосоздание</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-route"></i><br>Правила маршрутизации</div>
+                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="diagram-step"><i class="fas fa-chart-line"></i><br>SLA + Исполнение</div>
+            </div>
+            <p>✅ Автоматизация, SLA по группам, параллельные/последовательные цепочки, дашборды.</p>
+        </div>
+    </div>
+
+    <!-- ПОЛНАЯ ТАБЛИЦА СРАВНЕНИЯ OPEN-SOURCE (18 критериев) -->
+    <div class="section-title scroll-fade"><i class="fas fa-table-list"></i><span>Сравнение open‑решений для выбора платформы</span></div>
+    <div class="table-wrapper scroll-fade">
+        <table>
+            <thead>
+                <tr><th>Требование</th><th>GLPI</th><th>iTop</th><th>Znuny/OTOBO</th><th>Zammad</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Self-hosting в РФ</td><td>✅ Да</td><td>✅ Да</td><td>✅ Да</td><td>✅ Да</td></tr>
+                <tr><td>Русский язык (интерфейс)</td><td>✅ Полный</td><td>✅ Полный</td><td>✅ Полный</td><td>✅ Полный</td></tr>
+                <tr><td>152-ФЗ совместимость</td><td>✅ Да</td><td>✅ Да</td><td>✅ Да</td><td>✅ Да</td></tr>
+                <tr><td>Интеграция с AD/ADFS (SSO)</td><td>✅ Плагин (OAuthSSO, SAML)</td><td>✅ Встроено</td><td>✅ Встроено</td><td>✅ Встроено</td></tr>
+                <tr><td>Email-интеграция (IMAP/SMTP)</td><td>✅ Встроено</td><td>✅ Встроено</td><td>✅ Встроено</td><td>✅ Встроено</td></tr>
+                <tr><td>Гибкая маршрутизация</td><td>✅ Правила (rule engine)</td><td>✅ Визуальный редактор</td><td>✅ ITIL процессы</td><td>✅ Workflow</td></tr>
+                <tr><td>SLA по отделам с паузой</td><td>✅ SLA + календари</td><td>✅ SLA + календари</td><td>✅ ITIL SLA</td><td>✅ SLA</td></tr>
+                <tr><td>Параллельные задачи</td><td>⚠️ Подзадачи/плагины</td><td>✅ Встроено</td><td>✅ Встроено</td><td>⚠️ Workflow</td></tr>
+                <tr><td>Последовательная маршрутизация</td><td>✅ Правила</td><td>✅ Встроено</td><td>✅ Встроено</td><td>✅ Встроено</td></tr>
+                <tr><td>REST API</td><td>✅ Полный</td><td>✅ Полный</td><td>✅ Полный</td><td>✅ Полный</td></tr>
+                <tr><td>База знаний</td><td>✅ Встроена</td><td>✅ Встроена</td><td>✅ Встроена</td><td>✅ Встроена</td></tr>
+                <tr><td>Отчётность/дашборды</td><td>✅ Встроены</td><td>✅ Встроены</td><td>✅ Встроены</td><td>✅ Встроены</td></tr>
+                <tr><td>Документация на русском</td><td>✅ Есть</td><td>✅ Есть</td><td>✅ Есть</td><td>⚠️ Частично</td></tr>
+                <tr><td>Простота кастомизации</td><td>⚠️ PHP</td><td>⚠️ PHP</td><td>❌ Perl</td><td>❌ Ruby</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="highlight-red scroll-fade"><i class="fas fa-check-circle"></i> <strong>Рекомендация:</strong> iTop или GLPI — оптимальны для кастомизации под процессы компании, с поддержкой иерархии подразделений, CMDB и зрелыми SLA-механизмами.</div>
+
+<!-- Блок: кто и почему выбирает платформу + примеры интерфейсов -->
+<div class="section-title scroll-fade">
+    <i class="fas fa-building"></i>
+    <span>Какой сервис-деск выбрать? Опыт компаний</span>
+</div>
+<div class="grid-cards scroll-fade" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+    <!-- GLPI -->
+    <div class="card">
+        <div class="badge-red"><i class="fas fa-chalkboard"></i> GLPI</div>
+        <div class="diagram-placeholder" style="background: #f5f0f0; margin-bottom: 0.8rem;">
+            <i class="fas fa-desktop fa-2x" style="color:#b81b1b;"></i>
+            <span style="font-size:0.7rem;"></span>
+            <!-- замените на реальный скриншот: <img src="путь/glpi.png" style="max-width:100%; border-radius:0.5rem;"> -->
+        </div>
+        <h3>Для кого: производство, госсектор, IT-аутсорс</h3>
+        <ul>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> <strong>Почему выбирают:</strong> объединяет help desk + учёт активов (CMDB) + лицензии + финансы в одной системе.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Идеально, если важно отслеживать не только заявки, но и каждый компьютер, станок, договор.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Сильная инвентаризация, активное сообщество, бесплатная версия.</li>
+        </ul>
+    </div>
+    <!-- iTop -->
+    <div class="card">
+        <div class="badge-red"><i class="fas fa-chalkboard"></i> iTop</div>
+        <div class="diagram-placeholder" style="background: #f5f0f0; margin-bottom: 0.8rem;">
+            <i class="fas fa-chart-line fa-2x" style="color:#b81b1b;"></i>
+            <span style="font-size:0.7rem;"></span>
+        </div>
+        <h3>Для кого: банки, страховые, крупный ритейл, ITIL-ориентированные</h3>
+        <ul>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> <strong>Почему выбирают:</strong> строгие ITIL-процессы, визуальный редактор процессов</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Идеален для компаний, где нужен формальный подход к управлению инцидентами, проблемами, изменениями.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Поддержка сложных SLA и цепочек согласований.</li>
+        </ul>
+    </div>
+    <!-- Znuny/OTOBO -->
+    <div class="card">
+        <div class="badge-red"><i class="fas fa-chalkboard"></i> Znuny / OTOBO</div>
+        <div class="diagram-placeholder" style="background: #f5f0f0; margin-bottom: 0.8rem;">
+            <i class="fas fa-history fa-2x" style="color:#b81b1b;"></i>
+            <span style="font-size:0.7rem;"></span>
+        </div>
+        <h3>Для кого: крупные европейские корпорации, «наследники» OTRS (Open Ticket Request System)</h3>
+        <ul>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> <strong>Почему выбирают:</strong> стабильность, долгосрочная поддержка, знакомые ITIL-процессы.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Znuny — максимально близок к классическому OTRS, подходит для консервативных ИТ-отделов.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> OTOBO — современный, с обновлённым интерфейсом и AI-функциями.</li>
+        </ul>
+    </div>
+    <!-- Zammad -->
+    <div class="card">
+        <div class="badge-red"><i class="fas fa-chalkboard"></i> Zammad</div>
+        <div class="diagram-placeholder" style="background: #f5f0f0; margin-bottom: 0.8rem;">
+            <i class="fas fa-comment-dots fa-2x" style="color:#b81b1b;"></i>
+            <span style="font-size:0.7rem;"></span>
+        </div>
+        <h3>Для кого: стартапы, e-commerce, IT-компании, клиентские сервисы</h3>
+        <ul>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> <strong>Почему выбирают:</strong> современный дизайн, многоканальность (email, чат, Telegram, соцсети) из коробки.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Лёгкость настройки, отличный UX, быстрое внедрение.</li>
+            <li><i class="fas fa-check-circle" style="color:#b81b1b;"></i> Подходит для команд, которые ценят простоту и скорость работы.</li>
+        </ul>
+    </div>
+</div>
+<div class="highlight-red scroll-fade" style="margin-top: 0;">
+    <i class="fas fa-chart-simple"></i> <strong>Более подходящие GLPI или iTop</strong> — оба решения поддерживают учёт активов, гибкую маршрутизацию, SLA по отделам, интеграцию с 1С и AD, а также кастомизацию без программирования.
+</div>
+
+
+    <!-- План внедрения и выгоды -->
+    <div class="section-title scroll-fade"><i class="fas fa-calendar-alt"></i><span>План внедрения (MVP) и ключевые выгоды</span></div>
+    <div class="two-columns scroll-fade">
+        <div class="card"><ul><li><strong>Недели 1-4:</strong> выбор платформы, развёртывание</li><li><strong>Недели 5-7:</strong> кастомизация типов, правил маршрутизации, SLA</li><li><strong>Недели 8-9:</strong> интеграция с почтой, 1С, миграция данных</li><li><strong>Недели 10-11:</strong> тестирование, обучение агентов и диспетчеров</li><li><strong>Недели 12-16:</strong> пилотный запуск, сбор обратной связи, корректировки</li></ul></div>
+        <div class="card"><h3><i class="fas fa-gem"></i> Ключевые выгоды</h3><ul><li>📈 Сокращение времени обработки заявок на 30%</li><li>📊 Прозрачные SLA и дашборды по отделам</li><li>🤖 Снижение ручного труда L1 на 40%</li><li>🔒 Соответствие 152-ФЗ, хранение данных в РФ</li><li>💰 Отказ от необслуживаемой системы Redmine</li><li>🛠️ Кастомизация без привлечения разработчиков</li></ul></div>
+    </div>
+
+    <div class="scroll-fade" style="background: #fff2f0; border-radius: 1.8rem; padding: 2rem; margin-top: 2rem; text-align: center; border: 1px solid #fad7d7;">
+        <i class="fas fa-couch" style="font-size: 2rem; color: #b81b1b; margin-bottom: 0.5rem;"></i>
+        <h3 style="font-size: 1.6rem; font-weight: 700;">Трансформация поддержки</h3>
+        <p style="max-width: 700px; margin: 0.5rem auto;">Современный Service Desk — стратегическое преимущество.</p>
+        <div style="margin-top: 1rem;"><span class="btn-red"><i class="fas fa-calendar-alt"></i> 2026</span></div>
+    </div>
+
+    <footer><i class="fas fa-copyright"></i> Мебельная фабрика — Проект Service Desk 2026. Данные на основе анализа Confluence и интервью со стейкхолдерами.</footer>
+</div>
+
+<script>
+    const animatedElements = document.querySelectorAll('.scroll-fade, .info-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+    window.addEventListener('load', () => {
+        animatedElements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
+        });
+    });
+</script>
+</body>
+</html>
