@@ -76,20 +76,18 @@
 
 ## 📂 Документация проекта
 
-- 📄 [Презентация проекта](./docs/presentation.pdf)
-- 📋 [ТЗ и требования](./docs/requirements.md)
-- 📐 [Схемы процессов](./diagrams/)
-- 📊 [Метрики эффективности](./docs/metrics.md)
+- 📄 [Презентация проекта](https://github.com/Kudryavtseva91/documents_project/tree/main/servicedesk-glpi-project/docs)
+- 📋 [ТЗ и требования](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/docs/requirements.md)
 
 ---
 
 ## 📸 Скриншоты
 
-- [Интерфейс GLPI](./screenshots/glpi-dashboard.png)
-- [Таблица заявок с колонкой "Группа инициатора"](./screenshots/glpi-ticket-list.png)
-- [Настройки SLA](./screenshots/sla-settings.png)
-- [Правила маршрутизации](./screenshots/routing-rules.png)
-- [Схема AS-IS → TO-BE](./screenshots/as-is-to-be.png)
+- [Интерфейс GLPI](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/screenshots/glpi-dashboard.png)
+- [Таблица заявок](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/screenshots/glpi-ticket-list.png)
+- [Настройки SLA](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/screenshots/sla-settings.png)
+- [Правила маршрутизации]([./screenshots/routing-rules.png](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/screenshots/routing-rules.png))
+- [Кастомные поля](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/screenshots/glpi-custom-fields.png)
 
 ---
 
