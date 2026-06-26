@@ -87,19 +87,17 @@
 
 ## 📂 Документация проекта
 
-- 📋 [ТЗ на AI-ботов](./tz/bot-requirements.md)
-- 📐 [Архитектура RAG-бота](./schemes/rag-architecture.png)
-- 📊 [Схемы работы ботов](./schemes/bot-workflows.png)
-- 📄 [Инструкции для пользователей](./docs/user-guide.md)
+- 📋 [ТЗ на AI-ботов](https://github.com/Kudryavtseva91/documents_project/blob/main/ai-bots-project/docs/requirements.md)
+- 📊 [Схемы работы ботов](https://github.com/Kudryavtseva91/documents_project/tree/main/ai-bots-project/schemes)
 
 ---
 
 ## 📸 Скриншоты
 
-- [Пример диалога с ботом](./screenshots/bot-chat-example.png)
-- [Результат классификации заявки](./screenshots/classification-result.png)
-- [Дашборд аналитики](./screenshots/bot-analytics.png)
-- [Архитектура RAG](./screenshots/rag-architecture.png)
+- [Пример диалога с ботом](https://github.com/Kudryavtseva91/documents_project/blob/main/ai-bots-project/screenshots/bot-chat-example.png)
+- [Результат классификации заявки](https://github.com/Kudryavtseva91/documents_project/blob/main/ai-bots-project/screenshots/classification-result.png)
+- [Дашборд аналитики](https://github.com/Kudryavtseva91/documents_project/blob/main/ai-bots-project/screenshots/bot-analytics.png)
+- [Архитектура RAG](https://github.com/Kudryavtseva91/documents_project/blob/main/ai-bots-project/screenshots/rag-architecture.png)
 
 ---
 
