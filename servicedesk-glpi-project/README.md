@@ -76,7 +76,7 @@
 
 ## 📂 Документация проекта
 
-- 📄 [Презентация проекта](https://github.com/Kudryavtseva91/documents_project/tree/main/servicedesk-glpi-project/docs)
+- 📄 [Презентация проекта](https://Kudryavtseva91.github.io/documents_project/servicedesk-glpi-project/docs/serviceDESK%20(6).html)
 - 📋 [ТЗ и требования](https://github.com/Kudryavtseva91/documents_project/blob/main/servicedesk-glpi-project/docs/requirements.md)
 
 ---
